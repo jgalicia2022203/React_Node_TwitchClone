@@ -91,8 +91,8 @@ return (
               validationMessage={validatePasswordMessage}
           />  
           <Input
-              field='password'
-              label='Password'
+              field='username'
+              label='Username'
               value={formState.username.value}
               onChangeHandler={handleInputValueChange}
               type='text'
