@@ -1,4 +1,4 @@
-export const isLoadingSpinner = () => {
+export const LoadingSpinner = () => {
     return (
         <div className="spinner-container">
             <div className="spinner"/>

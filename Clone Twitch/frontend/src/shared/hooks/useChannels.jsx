@@ -1,15 +1,18 @@
-import { useState } from "react";
-import toast from "react-hot-toast";
-import { getChannels as getChannelsRequest, getFollowedChannels } from "../../services/api";
+
+/* eslint-disable no-extra-boolean-cast */
+import { useState } from "react"
+import toast from "react-hot-toast"
+import {  getChannels as getChannelsRequest, getFollowedChannels} from "../../services"
+
 
 export const useChannels = () => {
-    const [channels, setChannels] = useState([])
+    const [ channels, setChannels ] = useState([])
 
-    const getChannels = async (isLogged = false) => {
+    const getChannels = async(isLogged = false) => {
         const channelsData = await getChannelsRequest()
         if(channelsData.error){
             return toast.error(
-                channelsData.e?.response?.data || 'An error appeared at database'
+                channelsData.e?.response?.data || 'Error ocurred when reading channels'
             )
         }
 
@@ -34,11 +37,10 @@ export const useChannels = () => {
         })
     }
 
-
     return {
-    getChannels,
-    isFetching: !Boolean(channels),
-    allChannels: channels?.channels,
-    followedChannels: channels?.followedChannels
+        getChannels,
+        isFetching: !Boolean(channels),
+        allChannels: channels?.channels,
+        followedChannels: channels?.followedChannels
     }
 }
